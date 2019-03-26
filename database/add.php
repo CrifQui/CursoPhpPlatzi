@@ -7,13 +7,13 @@ if (!empty($_POST)) {
 	$email = $_POST['email'];
 	$password = $_POST['password'];
 
-	$sql="INSERT INTO `users`(`id`, `name`, `email`, `password`) VALUES(:name, :email, :password)";
+	$sql="INSERT INTO users (name, email, password) VALUES(:name, :email, :password)";
 
 	$query = $pdo->prepare($sql);
 	$result = $query->execute([
-		'name'=> $name,
-		'email'=> $email,
-		'password' => $password
+		'name'=>$name,
+		'email'=>$email,
+		'password'=>$password
 	]);
 
 }
@@ -24,6 +24,7 @@ if (!empty($_POST)) {
 <!DOCTYPE html>
 <head>
 	<title>Ading User</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
 	<div class="container">
@@ -41,9 +42,6 @@ if (!empty($_POST)) {
 			<br>
 			<input type="submit" value="Send">
 		</form>
-		<?php
-			echo $result;
-		?>
 	</div>
 </body>
 </html>
