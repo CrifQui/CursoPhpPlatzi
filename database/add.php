@@ -1,7 +1,6 @@
 <?php
-
 require_once 'config.php';
-
+$result=false;
 if (!empty($_POST)) {
 	$name = $_POST['name'];
 	$email = $_POST['email'];
@@ -15,10 +14,7 @@ if (!empty($_POST)) {
 		'email'=>$email,
 		'password'=>$password
 	]);
-
 }
-
-
 ?>
 
 <!DOCTYPE html>
@@ -30,6 +26,12 @@ if (!empty($_POST)) {
 	<div class="container">
 		<h1>Add User</h1>
 		<a href="index.php">Home</a>
+		<?php
+			if($result){
+				echo '<div class="alert alert-success" role="role">Add Success</div>';
+			}
+
+		?>
 		<form action="add.php" method="post">
 			<label for="name"> Name</label>
 			<input type="text" name="name" id="name">
